@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {DataTable, Searchbar} from 'react-native-paper';
-import {searchFood} from '../Api/NutritionixApi';
+import {searchFood} from '../../Api/NutritionixApi';
 import {View, FlatList} from 'react-native';
-import ListItem from './Foods/listitem';
+import ListItem from './listitem';
 
-export default class Food extends React.Component {
+export default class SelectFood extends React.Component {
   state = {
     searchQuery: '',
     foods: [],

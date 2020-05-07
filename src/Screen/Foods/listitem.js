@@ -5,7 +5,6 @@ import {DataTable} from 'react-native-paper';
 export default class ListItem extends Component {
   render() {
     const {food} = this.props;
-    console.log(food);
     return (
       <View>
         <DataTable.Row>
