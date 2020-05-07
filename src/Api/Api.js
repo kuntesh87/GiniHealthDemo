@@ -8,7 +8,7 @@ export const getAnalysisForFood = async () => {
     const response = await axios.get(url, {
       headers: {Authorization: 'Basic 8c74efc6bd0bb10200d38237e1905d6b'},
     });
-    console.log('response', response);
+    return response;
   } catch (err) {
     console.log('error', err);
   }

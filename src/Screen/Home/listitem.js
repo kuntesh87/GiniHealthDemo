@@ -10,7 +10,6 @@ export default class ListItem extends Component {
   };
   render() {
     const {food} = this.props;
-    console.log('food', food);
     return (
       <View>
         <DataTable.Row>
