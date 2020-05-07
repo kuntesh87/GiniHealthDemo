@@ -19,5 +19,3 @@ export const searchFood = async (query) => {
     console.log('error in nutritionix', err);
   }
 };
-
-searchFood().then().catch();

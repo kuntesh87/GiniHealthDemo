@@ -1,28 +1,27 @@
 import * as React from 'react';
 import {DataTable, Button} from 'react-native-paper';
-import {getLogTest} from '../Api/Api';
 import {View, FlatList} from 'react-native';
-import ListItem from './Foods/listitem';
+import ListItem from './listitem';
 
 export default class Home extends React.Component {
-  state = {
-    searchQuery: '',
-    foods: [],
-  };
 
   onAddClick = () => {
     this.props.navigation.navigate('SelectFood');
   };
   renderListItem = ({item, index}) => <ListItem food={item} index={index} />;
   keyExtractor = (item, index) => index.toString();
+
+  componentDidUpdate() {
+    this.props.fetchFoodlog();
+  }
   render() {
-    const {foods} = this.state;
+    const {foodLog} = this.props;
     return (
       <View>
         <Button icon="plus" mode="contained" onPress={() => this.onAddClick()}>
           Add New
         </Button>
-        {foods.length > 0 ? (
+        {foodLog.length > 0 ? (
           <DataTable>
             <FlatList
               ListHeaderComponent={
@@ -32,7 +31,7 @@ export default class Home extends React.Component {
                   <DataTable.Title>View Detail</DataTable.Title>
                 </DataTable.Header>
               }
-              data={foods}
+              data={foodLog}
               renderItem={this.renderListItem}
               keyExtractor={this.keyExtractor}
             />

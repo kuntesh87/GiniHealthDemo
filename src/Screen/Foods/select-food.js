@@ -21,7 +21,7 @@ export default class SelectFood extends React.Component {
     }
   };
 
-  renderListItem = ({item, index}) => <ListItem food={item} index={index} />;
+  renderListItem = ({item, index}) => <ListItem food={item} navigation={this.props.navigation} index={index} />;
   keyExtractor = (item, index) => index.toString();
   render() {
     const {searchQuery, foods} = this.state;

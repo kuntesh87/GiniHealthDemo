@@ -10,12 +10,12 @@ export default class ListItem extends Component {
   };
   render() {
     const {food} = this.props;
-
+    console.log('food', food);
     return (
       <View>
         <DataTable.Row>
-          <DataTable.Cell>{food.food_name}</DataTable.Cell>
-          <DataTable.Cell>{food.nf_calories}</DataTable.Cell>
+          <DataTable.Cell>{food.data.food_name}</DataTable.Cell>
+          <DataTable.Cell>{food.data.nf_calories}</DataTable.Cell>
 
           <IconButton
             icon="plus"
