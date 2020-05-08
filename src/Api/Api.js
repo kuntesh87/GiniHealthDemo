@@ -6,17 +6,13 @@ export const getAnalysisForFood = async () => {
   try {
     const url = api + '/analyseNutritionixTest';
     const response = await axios.get(url, {
-      data: 'for breakfast i ate 2 eggs, bacon, and french toast',
-      timezone: 'US/Eastern',
       headers: {Authorization: 'Basic 8c74efc6bd0bb10200d38237e1905d6b'},
     });
-    console.log('response', response);
+    return response;
   } catch (err) {
     console.log('error', err);
   }
 };
-
-getAnalysisForFood().then().catch();
 
 // get current log
 export const getLogTest = async () => {
@@ -25,32 +21,40 @@ export const getLogTest = async () => {
     const response = await axios.get(url, {
       headers: {Authorization: 'Basic 8c74efc6bd0bb10200d38237e1905d6b'},
     });
-    console.log('response', response);
+    return response.data;
   } catch (err) {
     console.log('error', err);
   }
 };
 
 // add food test
-export const logFoodTest = async () => {
+export const logFoodTest = async (data) => {
   try {
     const url = api + '/logFoodTest';
-    const response = await axios.get(url, {
-      headers: {Authorization: 'Basic 8c74efc6bd0bb10200d38237e1905d6b'},
-    });
+    const response = await axios.post(
+      url,
+      {data},
+      {
+        headers: {Authorization: 'Basic 8c74efc6bd0bb10200d38237e1905d6b'},
+      },
+    );
     console.log('response', response);
   } catch (err) {
     console.log('error', err);
   }
 };
 
-export const deleteLogTest = async () => {
+export const deleteLogTest = async (id) => {
   try {
     const url = api + '/deleteLogTest';
-    const response = await axios.get(url, {
-      headers: {Authorization: 'Basic 8c74efc6bd0bb10200d38237e1905d6b'},
-    });
-    console.log('response', response);
+    const response = await axios.delete(
+      url,
+      {id},
+      {
+        headers: {Authorization: 'Basic 8c74efc6bd0bb10200d38237e1905d6b'},
+      },
+    );
+    console.log('delete response', response);
   } catch (err) {
     console.log('error', err);
   }

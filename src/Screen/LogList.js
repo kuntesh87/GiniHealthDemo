@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {Button, Card, Title, Paragraph} from 'react-native-paper';
 
-
 const LogList = () => (
   <Card>
     <Card.Content>

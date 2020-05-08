@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {DataTable, Searchbar} from 'react-native-paper';
-import {searchFood} from '../Api/NutritionixApi';
+import {searchFood} from '../../Api/NutritionixApi';
 import {View, FlatList} from 'react-native';
-import ListItem from './Foods/listitem';
+import ListItem from './listitem';
 
-export default class Home extends React.Component {
+export default class SelectFood extends React.Component {
   state = {
     searchQuery: '',
     foods: [],
@@ -21,7 +21,7 @@ export default class Home extends React.Component {
     }
   };
 
-  renderListItem = ({item, index}) => <ListItem food={item} index={index} />;
+  renderListItem = ({item, index}) => <ListItem food={item} navigation={this.props.navigation} index={index} />;
   keyExtractor = (item, index) => index.toString();
   render() {
     const {searchQuery, foods} = this.state;

@@ -2,9 +2,11 @@ import React from 'react';
 import PrimaryNav from './src/Navigation/app-navigation';
 //import {Provider} from 'react-redux';
 import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
+import {Provider} from 'react-redux';
+import createStore from './create-store';
 
 // create our store
-//const { store, persistor } = createStore();
+const {store} = createStore();
 
 const theme = {
   ...DefaultTheme,
@@ -18,9 +20,11 @@ const theme = {
 };
 const App = () => {
   return (
-    <PaperProvider theme={theme}>
-      <PrimaryNav />
-    </PaperProvider>
+    <Provider store={store}>
+      <PaperProvider theme={theme}>
+        <PrimaryNav />
+      </PaperProvider>
+    </Provider>
   );
 };
 
