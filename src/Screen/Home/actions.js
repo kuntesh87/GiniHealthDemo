@@ -9,7 +9,6 @@ const updateFoodLog = (foodLog) => ({
 export const fetchFoodlog = () => async (dispatch, getState) => {
   try {
     const foodLog = await getLogTest();
-    console.log('fetchFoodlog', foodLog);
     dispatch(updateFoodLog(foodLog));
   } catch (error) {
     console.log('fetchFoodlog Error: ', error);

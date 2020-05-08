@@ -1,15 +1,10 @@
 import React, {Component} from 'react';
 import {View} from 'react-native';
 import {DataTable, IconButton, Colors} from 'react-native-paper';
-import {logFoodTest} from '../../Api/Api';
 
 export default class ListItem extends Component {
-  addFood = async (food) => {
-    await logFoodTest(food);
-    this.props.navigation.navigate('Home');
-  };
   render() {
-    const {food} = this.props;
+    const {food, addFood} = this.props;
 
     return (
       <View>
@@ -21,7 +16,7 @@ export default class ListItem extends Component {
             icon="plus"
             color={Colors.red500}
             size={20}
-            onPress={() => this.addFood(food)}
+            onPress={() => addFood(food)}
           />
         </DataTable.Row>
       </View>
