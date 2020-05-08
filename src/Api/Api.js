@@ -2,7 +2,6 @@ import axios from 'axios';
 
 const api = 'https://us-central1-gini-v0.cloudfunctions.net';
 
-
 //analyseNutritionixTest is not working so i update with analysisNutritionixTest
 
 export const getAnalysisForFood = async (food) => {
@@ -63,19 +62,22 @@ export const deleteLogTest = async (id) => {
         headers: {Authorization: 'Basic 8c74efc6bd0bb10200d38237e1905d6b'},
       },
     );
-    console.log('delete response', response);
     return response;
   } catch (err) {
     console.log('error', err);
   }
 };
 
-export const updateLogTest = async () => {
+export const updateLogTest = async (data) => {
   try {
     const url = api + '/updateLogTest';
-    const response = await axios.get(url, {
-      headers: {Authorization: 'Basic 8c74efc6bd0bb10200d38237e1905d6b'},
-    });
+    const response = await axios.post(
+      url,
+      {id: data.id, data},
+      {
+        headers: {Authorization: 'Basic 8c74efc6bd0bb10200d38237e1905d6b'},
+      },
+    );
     console.log('response', response);
     return response;
   } catch (err) {

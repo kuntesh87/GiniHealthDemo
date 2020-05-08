@@ -5,7 +5,6 @@ import {DataTable, IconButton, Colors} from 'react-native-paper';
 export default class ListItem extends Component {
   render() {
     const {food, analysisFood, updateFood, deleteFood} = this.props;
-    console.log(food);
     return (
       <View>
         <DataTable.Row>

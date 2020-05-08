@@ -2,7 +2,7 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Home from '../Screen/Home';
-import SelectFood from '../Screen/Foods';
+import SelectFood from '../Screen/SelectFood';
 import EditFood from '../Screen/EditFood';
 
 // Declare Default Header Component
