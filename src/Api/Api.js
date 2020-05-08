@@ -38,7 +38,7 @@ export const logFoodTest = async (data) => {
         headers: {Authorization: 'Basic 8c74efc6bd0bb10200d38237e1905d6b'},
       },
     );
-    console.log('response', response);
+    return response;
   } catch (err) {
     console.log('error', err);
   }
@@ -47,7 +47,7 @@ export const logFoodTest = async (data) => {
 export const deleteLogTest = async (id) => {
   try {
     const url = api + '/deleteLogTest';
-    const response = await axios.delete(
+    const response = await axios.post(
       url,
       {id},
       {
@@ -55,6 +55,7 @@ export const deleteLogTest = async (id) => {
       },
     );
     console.log('delete response', response);
+    return response;
   } catch (err) {
     console.log('error', err);
   }
@@ -67,6 +68,7 @@ export const updateLogTest = async () => {
       headers: {Authorization: 'Basic 8c74efc6bd0bb10200d38237e1905d6b'},
     });
     console.log('response', response);
+    return response;
   } catch (err) {
     console.log('error', err);
   }

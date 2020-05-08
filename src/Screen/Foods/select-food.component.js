@@ -3,6 +3,7 @@ import {DataTable, Searchbar} from 'react-native-paper';
 import {searchFood} from '../../Api/NutritionixApi';
 import {View, FlatList} from 'react-native';
 import ListItem from './listitem';
+import {logFoodTest} from '../../Api/Api';
 
 export default class SelectFood extends React.Component {
   state = {
@@ -21,7 +22,20 @@ export default class SelectFood extends React.Component {
     }
   };
 
-  renderListItem = ({item, index}) => <ListItem food={item} navigation={this.props.navigation} index={index} />;
+  addFood = async (food) => {
+    await logFoodTest(food);
+    this.props.fetchFoodlog();
+    this.props.navigation.navigate('Home');
+  };
+
+  renderListItem = ({item, index}) => (
+    <ListItem
+      food={item}
+      navigation={this.props.navigation}
+      addFood={this.addFood}
+      index={index}
+    />
+  );
   keyExtractor = (item, index) => index.toString();
   render() {
     const {searchQuery, foods} = this.state;

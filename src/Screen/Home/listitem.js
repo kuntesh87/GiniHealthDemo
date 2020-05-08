@@ -8,19 +8,26 @@ export default class ListItem extends Component {
     await logFoodTest(food);
     this.props.navigation.navigate('Home');
   };
+ 
   render() {
-    const {food} = this.props;
+    const {food, deleteFood} = this.props;
     return (
       <View>
         <DataTable.Row>
           <DataTable.Cell>{food.data.food_name}</DataTable.Cell>
           <DataTable.Cell>{food.data.nf_calories}</DataTable.Cell>
-
           <IconButton
-            icon="plus"
+            icon="pencil-outline"
             color={Colors.red500}
             size={20}
             onPress={() => this.addFood(food)}
+          />
+
+          <IconButton
+            icon="trash-can"
+            color={Colors.red500}
+            size={20}
+            onPress={() => deleteFood(food)}
           />
         </DataTable.Row>
       </View>
