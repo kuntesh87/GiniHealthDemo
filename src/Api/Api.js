@@ -2,13 +2,22 @@ import axios from 'axios';
 
 const api = 'https://us-central1-gini-v0.cloudfunctions.net';
 
-export const getAnalysisForFood = async () => {
+
+//analyseNutritionixTest is not working so i update with analysisNutritionixTest
+
+export const getAnalysisForFood = async (food) => {
   try {
-    const url = api + '/analyseNutritionixTest';
-    const response = await axios.get(url, {
-      headers: {Authorization: 'Basic 8c74efc6bd0bb10200d38237e1905d6b'},
-    });
-    return response;
+    const {data} = food;
+    const url = api + '/analysisNutritionixTest';
+    const response = await axios.post(
+      url,
+      {data},
+      {
+        headers: {Authorization: 'Basic 8c74efc6bd0bb10200d38237e1905d6b'},
+      },
+    );
+    console.log('response', response);
+    return response.data;
   } catch (err) {
     console.log('error', err);
   }

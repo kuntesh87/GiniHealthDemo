@@ -1,7 +1,9 @@
 export const FETCH_FOODLOG = 'FETCH_FOODLOG';
+export const FETCH_FOOD = 'FETCH_FOOD';
 
 const initialState = {
   foodLog: [],
+  food: {},
 };
 const homeReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -10,6 +12,13 @@ const homeReducer = (state = initialState, action) => {
         ...state,
         ...{
           foodLog: action.payload,
+        },
+      };
+    case FETCH_FOOD:
+      return {
+        ...state,
+        ...{
+          food: action.payload,
         },
       };
     default:

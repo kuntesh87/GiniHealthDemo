@@ -2,7 +2,7 @@ import * as React from 'react';
 import {DataTable, Button} from 'react-native-paper';
 import {View, FlatList} from 'react-native';
 import ListItem from './listitem';
-import {deleteLogTest} from '../../Api/Api';
+import {deleteLogTest, getAnalysisForFood} from '../../Api/Api';
 
 export default class Home extends React.Component {
   onAddClick = () => {
@@ -14,8 +14,23 @@ export default class Home extends React.Component {
     await deleteLogTest(id);
     this.props.fetchFoodlog();
   };
+
+  updateFood = async (food) => {
+    this.props.fetchFood(food);
+    this.props.navigation.navigate('EditFood');
+  };
+
+  analysisFood = async (food) => {
+    await getAnalysisForFood(food);
+  };
   renderListItem = ({item, index}) => (
-    <ListItem food={item} deleteFood={this.deleteFood} index={index} />
+    <ListItem
+      food={item}
+      deleteFood={this.deleteFood}
+      analysisFood={this.analysisFood}
+      updateFood={this.updateFood}
+      index={index}
+    />
   );
   keyExtractor = (item, index) => index.toString();
 
@@ -43,10 +58,11 @@ export default class Home extends React.Component {
                   <DataTable.Title>Calories</DataTable.Title>
                   <DataTable.Title
                     style={{
-                      marginLeft: 150,
+                      marginLeft: 90,
                     }}>
-                    Edit
+                    Analysis
                   </DataTable.Title>
+                  <DataTable.Title>Edit</DataTable.Title>
                   <DataTable.Title>Delete</DataTable.Title>
                 </DataTable.Header>
               }
