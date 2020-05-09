@@ -4,6 +4,7 @@ import PrimaryNav from './src/Navigation/app-navigation';
 import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
 import {Provider} from 'react-redux';
 import createStore from './create-store';
+import Toast from './src/Components/Toast';
 
 // create our store
 const {store} = createStore();
@@ -23,6 +24,7 @@ const App = () => {
     <Provider store={store}>
       <PaperProvider theme={theme}>
         <PrimaryNav />
+        <Toast />
       </PaperProvider>
     </Provider>
   );

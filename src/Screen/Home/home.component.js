@@ -10,9 +10,14 @@ export default class Home extends React.Component {
   };
 
   deleteFood = async (food) => {
-    const {id} = food;
-    await deleteLogTest(id);
-    this.props.fetchFoodlog();
+    try {
+      const {id} = food;
+      await deleteLogTest(id);
+      this.props.fetchFoodlog();
+      this.props.openToast('Foodlog Deleted.');
+    } catch (err) {
+      this.props.openToast('Error in Foodlog Deletion.');
+    }
   };
 
   updateFood = async (food) => {
@@ -21,7 +26,12 @@ export default class Home extends React.Component {
   };
 
   analysisFood = async (food) => {
-    await getAnalysisForFood(food);
+    try {
+      await getAnalysisForFood(food);
+      this.props.openToast('Food submit for Analysis.');
+    } catch (err) {
+      this.props.openToast('Error in Food Analysis.');
+    }
   };
   renderListItem = ({item, index}) => (
     <ListItem

@@ -14,23 +14,28 @@ export default class EditFood extends React.Component {
   };
 
   updateFood = async () => {
-    const {id} = this.props.food;
-    const {
-      food_name,
-      nf_calories,
-      brand_name,
-      brand_name_item_name,
-    } = this.state;
-    const food = {
-      id,
-      food_name,
-      nf_calories: Number(nf_calories),
-      brand_name,
-      brand_name_item_name,
-    };
-    await updateLogTest(food);
-    this.props.fetchFoodlog();
-    this.props.navigation.navigate('Home');
+    try {
+      const {id} = this.props.food;
+      const {
+        food_name,
+        nf_calories,
+        brand_name,
+        brand_name_item_name,
+      } = this.state;
+      const food = {
+        id,
+        food_name,
+        nf_calories: Number(nf_calories),
+        brand_name,
+        brand_name_item_name,
+      };
+      await updateLogTest(food);
+      this.props.fetchFoodlog();
+      this.props.navigation.navigate('Home');
+      this.props.openToast('Foodlog updated.');
+    } catch (err) {
+      this.props.openToast(' Erro in Foodlog update.');
+    }
   };
 
   cancelFood = async () => {
