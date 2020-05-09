@@ -23,9 +23,14 @@ export default class SelectFood extends React.Component {
   };
 
   addFood = async (food) => {
-    await logFoodTest(food);
-    this.props.fetchFoodlog();
-    this.props.navigation.navigate('Home');
+    try {
+      await logFoodTest(food);
+      this.props.fetchFoodlog();
+      this.props.navigation.navigate('Home');
+      this.props.openToast('Foodlog Inserted');
+    } catch (err) {
+      this.props.openToast('Error in Foodlog Insertion.');
+    }
   };
 
   renderListItem = ({item, index}) => (
